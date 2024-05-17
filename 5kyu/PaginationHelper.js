@@ -18,3 +18,35 @@ helper.pageIndex(20); // should == -1
 helper.pageIndex(-10); // should == -1
 */
 
+class PaginationHelper {
+	constructor(collection, itemsPerPage) {
+	this.collection = collection;
+  this.itemsPerPage = itemsPerPage;
+  this.pagesCount = Math.ceil(this.collection.length/this.itemsPerPage)
+  
+	}
+	itemCount() {
+	// returns the number of items within the entire collection
+    return this.collection.length
+	}
+	pageCount() {
+	// returns the number of pages
+     return this.pagesCount
+	}
+	pageItemCount(pageIndex) {
+	// returns the number of items on the current page. page_index is zero based.
+	// this method should return -1 for pageIndex values that are out of range
+	if(pageIndex >= this.pagesCount || pageIndex < 0) {
+    return -1
+  } else {
+    let firstItemIndex = pageIndex * this.itemsPerPage;
+    let lastItemIndex = Math.min(firstItemIndex + this.itemsPerPage - 1, this.collection.length - 1)
+    let currentAmoutOfItems = lastItemIndex - firstItemIndex + 1
+    return currentAmoutOfItems
+  }
+  }
+	pageIndex(itemIndex) {
+    if(itemIndex >= this.collection.length || itemIndex < 0) {
+    return -1
+ } 
+    return Math.floor(itemIndex/this.itemsPerPage)
