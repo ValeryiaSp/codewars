@@ -12,3 +12,20 @@ If an object is made of two materials, its type should be listed in both of the 
 The order of the type's in each bin should be the same as the order of their respective objects was in the input list
 */
 
+function recycle(array) {
+  const accum = {paper:[],glass:[],organic:[], plastic:[]};
+  
+  array.forEach((item) => {
+    const materialName = item.material
+      accum[materialName].push(item.type)
+    
+  
+    
+    const secondMaterialName = item.secondMaterial
+    if (secondMaterialName) {
+      accum[secondMaterialName].push(item.type)
+      }
+
+})
+  return Object.values(accum)
+}
