@@ -15,3 +15,9 @@ function calculate(...args1) {
     return [...args1, ...args2].reduce((sum, current) => sum + current, 0,)
   }
 }
+
+function calculate(...args1) {
+  return function(...args2){
+    return (args1).concat(args2).reduce((sum, current) => sum + current, 0,)
+  }
+}
