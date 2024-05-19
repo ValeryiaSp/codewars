@@ -10,3 +10,19 @@ Examples
 The input will always be an array.
 
 */
+
+function deepCount(arr){
+  if (arr.length === 0) {
+    return 0;
+  }
+   let counter = 0
+  for (let i=0; i<arr.length; i++) {
+  if (Array.isArray(arr[i])) {
+    counter = counter + 1 + deepCount(arr[i])
+  } else {
+    counter += 1
+  }
+   
+  }
+   return counter
+ }
