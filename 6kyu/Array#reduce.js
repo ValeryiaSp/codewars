@@ -16,3 +16,18 @@ Summary: The reduce method goes through each element of an array, applies the fu
 Ruby methods should expect a lambda.
 
 */
+
+Array.prototype.reduce = function(process, initial) {
+  let value = initial === undefined ? this[0] : initial;
+    
+  const startIndex = (initial !== undefined) ? 0 : 1
+    for (let i = startIndex; i < this.length; i++) {
+      value = process(value, this[i], this)
+    }
+    return value;
+  }
+  
+  //arr.reduce(function(accum, item, arr) {
+    //accum +=item 
+    //return accum
+  //}, 0)
