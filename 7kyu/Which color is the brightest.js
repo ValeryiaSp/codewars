@@ -15,3 +15,14 @@ If there are multiple brightest colors, return the first one:
 brightest(["#00FF00", "#FFFF00", "#01130F"]) == "#00FF00"
 */
 
+function brightest(colors){
+  const value = colors.map((item) => {
+    let red = parseInt(item.slice(1,3), 16);
+    let green = parseInt(item.slice(3,5), 16);
+    let blue = parseInt(item.slice(5), 16);
+    return Math.max(red, blue, green)
+  })
+   let maxValue = Math.max(...value);
+   let maxValueIndex = value.indexOf(maxValue);
+   return colors[maxValueIndex]
+}
